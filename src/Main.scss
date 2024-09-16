@@ -16,6 +16,18 @@ $light_pink:#FF9898;
 
 //TYPOGRAPHY
 $font-family:"Plus Jakarta Sans", sans-serif;
+$heading_XL:24px;
+$heading_L:18px;
+$heading_M:15px;
+$heading_S:12px;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:$font-family;
+
+}
 
 body{
     background-color:$pure_white;
