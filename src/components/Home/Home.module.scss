@@ -12,7 +12,7 @@
       border-right: 2px dashed orange;
       width: 20.83%;
       height: 100%;
-      padding:1rem 1.5rem; 
+      padding: 1rem 1.5rem;
 
       img {
         height: 100%;
@@ -70,6 +70,26 @@
       }
       .controls {
         border: 1px solid magenta;
+        .sidebar_visibility {
+            border: 1px solid black;
+          .hide_sidebar {
+            text-transform: capitalize;
+          }
+        }
+        .screen_mode{
+            border:1px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .screen_mode_content{
+                border:1px solid red;
+                width: 50%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
         .switch {
           position: relative;
           display: inline-block;
@@ -104,11 +124,11 @@
           input:checked + .slider {
             background-color: #2196f3;
           }
-          input:focus + .slider{
+          input:focus + .slider {
             box-shadow: 0 0 1px #2196f3;
           }
-          input:checked + .slider:before{
-            transform:translate(26px);
+          input:checked + .slider:before {
+            transform: translate(26px);
           }
         }
       }

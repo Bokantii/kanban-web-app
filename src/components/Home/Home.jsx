@@ -5,7 +5,10 @@ import logoDark from "../../assets/logo-dark.svg";
 import IconCross from "../Icons/IconCross";
 import IconBoard from "../Icons/IconBoard";
 import IconVerticalEllipses from "../Icons/IconVerticalEllipses";
+import IconLightTheme from "../Icons/IconLightTheme";
+import IconDarkTheme from "../Icons/IconDarkTheme";
 import { useState } from "react";
+import IconHideSideBar from "../Icons/IconHideSideBar";
 
 const Home = () => {
   const iconBoardColor = "#828FA3";
@@ -13,7 +16,7 @@ const Home = () => {
   function displayClickedMessage() {
     console.log("New Board Created");
   }
-  const [numberOfBoards, setNumberOfBoards] = useState(3)
+  const [numberOfBoards, setNumberOfBoards] = useState(3);
   return (
     <section className={classes.home}>
       {/* header start */}
@@ -29,7 +32,9 @@ const Home = () => {
           <section className={classes.side_bar_content}>
             {/* All_boards start */}
             <section className={classes.all_boards}>
-              <span className={classes.all_boards_heading}>all boards ({numberOfBoards})</span>
+              <span className={classes.all_boards_heading}>
+                all boards ({numberOfBoards})
+              </span>
               <ul className={classes.boards}>
                 <li className={classes.board}>
                   <span className={classes.boardItem}>
@@ -66,14 +71,18 @@ const Home = () => {
             {/* controls start */}
             <section className={classes.controls}>
               <section className={classes.screen_mode}>
-                <label className={classes}>
-                  <input type="checkbox" />
-                  <span className={classes.slider}></span>
-                </label>
+                <section className={classes.screen_mode_content}>
+                  <IconLightTheme />
+                  <label className={classes.slider_label}>
+                    <input type="checkbox" />
+                    <span className={classes.slider}></span>
+                  </label>
+                  <IconDarkTheme />
+                </section>
               </section>
               <span className={classes.sidebar_visibility}>
-                <span></span>
-                <span>hide sidebar</span>
+                <IconHideSideBar />
+                <span className={classes.hide_sidebar}>hide sidebar</span>
               </span>
             </section>
             {/* controls end */}
