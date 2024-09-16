@@ -3,7 +3,17 @@ import classes from "./Home.module.scss";
 import logoLight from "../../assets/logo-light.svg";
 import logoDark from "../../assets/logo-dark.svg";
 import IconCross from "../Icons/IconCross";
+import IconBoard from "../Icons/IconBoard";
+import IconVerticalEllipses from "../Icons/IconVerticalEllipses";
+import { useState } from "react";
+
 const Home = () => {
+  const iconBoardColor = "#828FA3";
+  const createBoardColor = "#635FC7";
+  function displayClickedMessage() {
+    console.log("New Board Created");
+  }
+  const [numberOfBoards, setNumberOfBoards] = useState(3)
   return (
     <section className={classes.home}>
       {/* header start */}
@@ -17,25 +27,56 @@ const Home = () => {
       <section className={classes.kanban_app_body}>
         <section className={classes.side_bar}>
           <section className={classes.side_bar_content}>
-            {/* All boards start */}
+            {/* All_boards start */}
             <section className={classes.all_boards}>
-              <span className={classes.all_boards_heading}>all boards</span>
-              <ul>
-                <li>
-                  <span>Platform Launch</span>
+              <span className={classes.all_boards_heading}>all boards ({numberOfBoards})</span>
+              <ul className={classes.boards}>
+                <li className={classes.board}>
+                  <span className={classes.boardItem}>
+                    <IconBoard fill={iconBoardColor} />
+                    <span>Platform Launch</span>
+                  </span>
                 </li>
-                <li>
-                  <span>Marketing Plan</span>
+                <li className={classes.board}>
+                  <span className={classes.boardItem}>
+                    <IconBoard fill={iconBoardColor} />
+                    <span>Marketing Plan</span>
+                  </span>
                 </li>
-                <li>
-                  <span>Roadmap</span>
+                <li className={classes.board}>
+                  <span className={classes.boardItem}>
+                    <IconBoard fill={iconBoardColor} />
+                    <span>Roadmap</span>
+                  </span>
                 </li>
-                <li>
-                  <span>Create New Board</span>
+                <li className={`${classes.board} ${classes.create_new_board}`}>
+                  <span className={classes.boardItem}>
+                    <IconBoard fill={createBoardColor} />
+                    <span
+                      onClick={displayClickedMessage}
+                      className={classes.newBoard}
+                    >
+                      +Create New Board
+                    </span>
+                  </span>
                 </li>
               </ul>
             </section>
-            {/* All boards end */}
+            {/* All_boards end */}
+            {/* controls start */}
+            <section className={classes.controls}>
+              <section className={classes.screen_mode}>
+                <label className={classes}>
+                  <input type="checkbox" />
+                  <span className={classes.slider}></span>
+                </label>
+              </section>
+              <span className={classes.sidebar_visibility}>
+                <span></span>
+                <span>hide sidebar</span>
+              </span>
+            </section>
+            {/* controls end */}
           </section>
         </section>
       </section>
