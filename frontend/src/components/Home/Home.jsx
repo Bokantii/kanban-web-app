@@ -5,18 +5,37 @@ import logoDark from "../../assets/logo-dark.svg";
 import IconCross from "../Icons/IconCross";
 import IconBoard from "../Icons/IconBoard";
 import IconVerticalEllipses from "../Icons/IconVerticalEllipses";
-import IconLightTheme from "../Icons/IconLightTheme";
-import IconDarkTheme from "../Icons/IconDarkTheme";
+import IconDarkTheme from "../Icons/IconDarkTheme/IconDarkTheme";
+import IconLightTheme from "../Icons/IconLightTheme/IconLightTheme";
 import { useState } from "react";
 import IconHideSideBar from "../Icons/IconHideSideBar";
+import IconShowSideBar from "../Icons/IconShowSideBar";
 
 const Home = () => {
   const iconBoardColor = "#828FA3";
   const createBoardColor = "#635FC7";
+
   function displayClickedMessage() {
     console.log("New Board Created");
   }
+
   const [numberOfBoards, setNumberOfBoards] = useState(3);
+  const [sideBarIsHidden, setSideBarIsHidden] = useState(false);
+
+  const sideBarClass = sideBarIsHidden
+    ? `${classes.side_bar} ${classes.side_bar_hidden}`
+    : classes.side_bar;
+
+  function hideSideBar() {
+    console.log("Sidebar is now hidden");
+    setSideBarIsHidden(true);
+  }
+
+  function showSideBar() {
+    console.log("Sidebar is now shown");
+    setSideBarIsHidden(false);
+  }
+
   return (
     <section className={classes.home}>
       {/* header start */}
@@ -24,11 +43,26 @@ const Home = () => {
         <div className={classes.logo}>
           <img src={logoDark} alt="logo_light" />
         </div>
+        <div className={classes.header_text}>
+          {" "}
+          <span className={classes.platform_launch_text}>Platform Launch</span>
+          <div className={classes.header_text_right}>
+            <button className={classes.add_new_tasks}>add new tasks</button>
+            <IconVerticalEllipses />
+          </div>
+        </div>
       </section>
       {/* header end */}
+
       {/* body start */}
       <section className={classes.kanban_app_body}>
-        <section className={classes.side_bar}>
+        {/* sideBar START */}
+        <section className={sideBarClass}>
+          <div className={classes.logo}>
+            <img src={logoDark} alt="logo_light" />
+          </div>
+
+          {/* sidebarContent START */}
           <section className={classes.side_bar_content}>
             {/* All_boards start */}
             <section className={classes.all_boards}>
@@ -68,6 +102,7 @@ const Home = () => {
               </ul>
             </section>
             {/* All_boards end */}
+
             {/* controls start */}
             <section className={classes.controls}>
               <section className={classes.screen_mode}>
@@ -81,13 +116,21 @@ const Home = () => {
                 </section>
               </section>
               <span className={classes.sidebar_visibility}>
-                <IconHideSideBar />
+                <IconHideSideBar hideSideBar={hideSideBar} />
                 <span className={classes.hide_sidebar}>hide sidebar</span>
               </span>
             </section>
             {/* controls end */}
           </section>
+          {/* sidebarContent END */}
         </section>
+        {/* sideBar END */}
+
+        {/* showSideBar START */}
+        <div className={classes.showSideBar}>
+          <IconShowSideBar showSideBar={showSideBar} />
+        </div>
+        {/* showSideBar END */}
       </section>
       {/* body end */}
     </section>
