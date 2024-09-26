@@ -25,6 +25,7 @@ const Home = () => {
   const sideBarClass = sideBarIsHidden
     ? `${classes.side_bar} ${classes.side_bar_hidden}`
     : classes.side_bar;
+  const bodyContentTranslateStyle = sideBarIsHidden ? 0 : "20.83%";
 
   function hideSideBar() {
     console.log("Sidebar is now hidden");
@@ -47,7 +48,7 @@ const Home = () => {
           {" "}
           <span className={classes.platform_launch_text}>Platform Launch</span>
           <div className={classes.header_text_right}>
-            <button className={classes.add_new_tasks}>add new tasks</button>
+            <button className={classes.add_new_tasks}>+add new task</button>
             <IconVerticalEllipses />
           </div>
         </div>
@@ -56,6 +57,15 @@ const Home = () => {
 
       {/* body start */}
       <section className={classes.kanban_app_body}>
+        <section
+          className={classes.kanban_body_content}
+          style={{ transform: `translate(${bodyContentTranslateStyle})` }}
+        >
+          <section className={classes.new_column}>
+            <span>The board is empty. Create a new column to get started</span>
+            <button>+ add new column</button>
+          </section>
+        </section>
         {/* sideBar START */}
         <section className={sideBarClass}>
           <div className={classes.logo}>

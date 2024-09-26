@@ -1,35 +1,164 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
 //COLORS
-$vibrant_indigo:#635FC7;
-$soft_lavender:#A8A4FF;
-$deep_navy:#000112;
-$charcoal_black:#20212C;
-$graphite_gray:#2B2C37;
-$slate_gray:#3E3F4E;
-$muted_blue:#828FA3;
-$pale_blue:#E4EBFA;
-$off_white:#F4F7FD;
-$pure_white:#FFFFFF;
-$coral_red:#EA5555;
-$light_pink:#FF9898;
+$vibrant_indigo: #635fc7;
+$soft_lavender: #a8a4ff;
+$deep_navy: #000112;
+$charcoal_black: #20212c;
+$graphite_gray: #2b2c37;
+$slate_gray: #3e3f4e;
+$muted_blue: #828fa3;
+$pale_blue: #e4ebfa;
+$off_white: #f4f7fd;
+$pure_white: #ffffff;
+$coral_red: #ea5555;
+$light_pink: #ff9898;
 
 //TYPOGRAPHY
-$font-family:"Plus Jakarta Sans", sans-serif;
-$heading_XL:24px;
-$heading_L:18px;
-$heading_M:15px;
-$heading_S:12px;
+$font-family: "Plus Jakarta Sans", sans-serif;
+$heading_XL: 24px;
+$heading_L: 18px;
+$heading_M: 15px;
+$heading_S: 12px;
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:$font-family;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
 }
 
-body{
-    background-color:$pale_blue;
-}
+body {
+  background-color: $pale_blue;
+  display: flex;
+  flex-direction: column;
+  .side_bar {
+    width: 20.83%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    // border: 1px solid red;
+    font-size: $heading_S;
+    color: $muted_blue;
+    padding: 1.5rem;
+    height: 100vh;
+    z-index: 155000;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.58);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.58);
+    transition: 0.7s transform ease;
+    position: absolute;
+    top: 0;
+    left: 0;
 
+    .side_bar_content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      //   border: 1px solid green;
+      width: 100%;
+      height: 100%;
+      margin-top: 3rem;
+      .all_boards {
+        .all_boards_heading {
+          text-transform: uppercase;
+          font-size: $heading_S;
+        }
+        .boards {
+          margin-top: 1rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          .board {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .boardItem {
+              display: flex;
+              gap: 1rem;
+              width: 100%;
+              align-items: center;
+            }
+          }
+          .create_new_board * {
+            color: $vibrant_indigo;
+            .newBoard {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .controls {
+        .sidebar_visibility {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 50%;
+          padding: 0.3rem 0;
+
+          .hide_sidebar {
+            text-transform: capitalize;
+          }
+        }
+        .screen_mode {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $pale_blue;
+          padding: 0.4rem 0;
+          .screen_mode_content {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 20px;
+          input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: 0.4s;
+            transition: 4s;
+            &::before {
+              position: absolute;
+              content: "";
+              height: 20px;
+              width: 20px;
+              left: 4px;
+              bottom: 4px;
+              -webkit-transition: 0.4s;
+              transition: 0.4s;
+            }
+          }
+          input:checked + .slider {
+            background-color: #2196f3;
+          }
+          input:focus + .slider {
+            box-shadow: 0 0 1px #2196f3;
+          }
+          input:checked + .slider:before {
+            transform: translate(26px);
+          }
+        }
+      }
+    }
+  }
+}
