@@ -1,0 +1,10 @@
+@import '../../Main.scss';
+
+.card{
+    border: 1px solid red;
+    width: 100%;
+    padding: 0.8rem 0.4rem;
+    border-radius: 5px;
+    background-color:$pure_white;
+    cursor: pointer;
+}

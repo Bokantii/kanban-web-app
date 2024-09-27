@@ -10,8 +10,9 @@ import IconLightTheme from "../Icons/IconLightTheme/IconLightTheme";
 import { useState } from "react";
 import IconHideSideBar from "../Icons/IconHideSideBar";
 import IconShowSideBar from "../Icons/IconShowSideBar";
+import Column from "../Column/Column";
 
-const Home = () => {
+const Board = () => {
   const iconBoardColor = "#828FA3";
   const createBoardColor = "#635FC7";
 
@@ -21,24 +22,51 @@ const Home = () => {
 
   const [numberOfBoards, setNumberOfBoards] = useState(3);
   const [sideBarIsHidden, setSideBarIsHidden] = useState(false);
+  const [newColumIsCreated, setNewColumnIsCreated] = useState(false);
+  const [menuIsShown, setMenuIsShown] = useState(false);
 
   const sideBarClass = sideBarIsHidden
     ? `${classes.side_bar} ${classes.side_bar_hidden}`
     : classes.side_bar;
   const bodyContentTranslateStyle = sideBarIsHidden ? 0 : "20.83%";
-
+  const newColumnPrompt = (
+    <section className={classes.new_column}>
+      <span>The board is empty. Create a new column to get started</span>
+      <button className={classes.add_new_column} onClick={createNewColumn}>
+        + add new column
+      </button>
+    </section>
+  );
+  const columns = (
+    <section className={classes.columns}>
+      <Column />
+      <Column />
+      <Column />
+      
+      
+      <div className={classes.create_new_column}>
+        <span>+New Column</span>
+      </div>
+    </section>
+  );
+  const boardContent = newColumIsCreated ? columns : newColumnPrompt;
+  const menuShownStatus = menuIsShown ? "block" : "none";
+  function createNewColumn() {
+    setNewColumnIsCreated(true);
+  }
   function hideSideBar() {
-    console.log("Sidebar is now hidden");
     setSideBarIsHidden(true);
   }
 
   function showSideBar() {
-    console.log("Sidebar is now shown");
     setSideBarIsHidden(false);
   }
 
+  function showBoardMenu() {
+    setMenuIsShown(!menuIsShown);
+  }
   return (
-    <section className={classes.home}>
+    <section className={classes.board}>
       {/* header start */}
       <section className={classes.header}>
         <div className={classes.logo}>
@@ -48,8 +76,19 @@ const Home = () => {
           {" "}
           <span className={classes.platform_launch_text}>Platform Launch</span>
           <div className={classes.header_text_right}>
-            <button className={classes.add_new_tasks}>+add new task</button>
-            <IconVerticalEllipses />
+            <button className={classes.add_new_tasks} disabled>
+              +add new task
+            </button>
+            <IconVerticalEllipses showBoardMenu={showBoardMenu} />
+            <section
+              className={classes.newBoard_menu}
+              style={{ display: menuShownStatus }}
+            >
+              <div className={classes.newBoard_menu_content}>
+                <span className={classes.edit_board}>Edit Board</span>
+                <span className={classes.delete_board}>Delete Board</span>
+              </div>
+            </section>
           </div>
         </div>
       </section>
@@ -61,10 +100,7 @@ const Home = () => {
           className={classes.kanban_body_content}
           style={{ transform: `translate(${bodyContentTranslateStyle})` }}
         >
-          <section className={classes.new_column}>
-            <span>The board is empty. Create a new column to get started</span>
-            <button>+ add new column</button>
-          </section>
+          {boardContent}
         </section>
         {/* sideBar START */}
         <section className={sideBarClass}>
@@ -73,7 +109,7 @@ const Home = () => {
           </div>
 
           {/* sidebarContent START */}
-          <section className={classes.side_bar_content}>
+          <aside className={classes.side_bar_content}>
             {/* All_boards start */}
             <section className={classes.all_boards}>
               <span className={classes.all_boards_heading}>
@@ -125,13 +161,13 @@ const Home = () => {
                   <IconDarkTheme />
                 </section>
               </section>
-              <span className={classes.sidebar_visibility}>
-                <IconHideSideBar hideSideBar={hideSideBar} />
-                <span className={classes.hide_sidebar}>hide sidebar</span>
-              </span>
             </section>
+            <span className={classes.sidebar_visibility}>
+              <IconHideSideBar hideSideBar={hideSideBar} />
+              <span className={classes.hide_sidebar}>hide sidebar</span>
+            </span>
             {/* controls end */}
-          </section>
+          </aside>
           {/* sidebarContent END */}
         </section>
         {/* sideBar END */}
@@ -147,4 +183,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Board;

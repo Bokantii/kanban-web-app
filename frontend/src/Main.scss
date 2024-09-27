@@ -29,16 +29,16 @@ $heading_S: 12px;
 }
 
 body {
-  background-color: $pale_blue;
+  background-color: $off_white;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   .side_bar {
     width: 20.83%;
     display: flex;
     justify-content: space-between;
     align-items: start;
     flex-direction: column;
-    // border: 1px solid red;
     font-size: $heading_S;
     color: $muted_blue;
     padding: 1.5rem;
@@ -160,5 +160,21 @@ body {
         }
       }
     }
+  }
+}
+
+@mixin buttonStyling {
+  width: 40%;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  padding: 0.8rem;
+  border-radius: 50px;
+  border: none;
+  background-color: $vibrant_indigo;
+  color: $off_white;
+  cursor: pointer;
+  transition: 0.3s background-color ease;
+  &:hover {
+    background-color: $soft_lavender;
   }
 }

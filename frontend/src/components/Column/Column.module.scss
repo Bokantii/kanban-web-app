@@ -1,0 +1,13 @@
+.column{
+    display: flex;
+    flex-direction: column;
+    border:1px solid green;
+    min-width: 20%;
+    height: 100%;
+    .cards{
+        margin-top: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}
