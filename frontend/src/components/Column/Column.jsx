@@ -6,7 +6,7 @@ const Column = ({ numberOfCards }) => {
     <section className={classes.column}>
       <p>Todo(3)</p>
       <section className={classes.cards}>
-        <Card />
+        <Card> Read a book</Card>
         <Card />
         <Card />
         <Card />

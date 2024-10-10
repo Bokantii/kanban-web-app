@@ -1,8 +1,12 @@
-import Board from "./components/Home/Home";
+import Boards from "./components/Board/Board";
 import { useState, useRef } from "react";
+import Modal from "./components/Modal/Modal";
+import { ModalContext } from "./store/modal-context";
+import { useContext } from "react";
 function App() {
   const [enteredBoardName, setEnteredBoardName] = useState("");
   const [enteredTaskName, setEnteredTaskName] = useState("");
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [newBoardCreated, setNewBoardCreated] = useState(false);
   // const [newTaskCreated, setNewTaskCreated] = useState(false);
   const boardName = useRef();
@@ -12,20 +16,19 @@ function App() {
       Create New Board
     </button>
   );
-  // const boardTitle = newBoardCreated ? enteredBoardName : "";
-  // const boardTitle = enteredBoardName ? enteredBoardName : "";
-  const boardTitle =  enteredBoardName ?? "";
+ 
+  const boardTitle = enteredBoardName ?? "";
+  const modalCtx = useContext(ModalContext);
 
-  // function handleChange(event) {
-  //   // setNewTaskCreated(false);
-  //   setEnteredBoardName(event.target.value);
-  // }
   function handleClick() {
     setEnteredBoardName(boardName.current.value);
   }
+
   return (
     <>
-      <Board />
+      <ModalContext.Provider value={modalCtx}>
+        <Boards />
+      </ModalContext.Provider>
     </>
   );
 }
