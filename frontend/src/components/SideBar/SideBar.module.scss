@@ -1,0 +1,180 @@
+// Sidebar.scss
+@import './../../Main.scss';
+.showSideBar {
+  width: 50px;
+  height: 50px;
+  background-color: $vibrant_indigo;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  transition: 0.3s background-color ease;
+  &:hover {
+    background-color: $soft_lavender;
+  }
+}
+
+.side_bar_hidden {
+  transform: translate(-100%);
+}
+
+.side_bar {
+  width: 20.83%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: $heading_S;
+  color: $muted_blue;
+  padding: 1.5rem;
+  height: 100vh;
+  z-index: 155000;
+  background-color: white;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.58);
+  transition: 0.7s transform ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-bottom: 4rem;
+
+  .side_bar_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin-top: 3rem;
+ 
+
+    .all_boards {
+        border: 1px solid green;
+      .all_boards_heading {
+        text-transform: uppercase;
+        font-size: $heading_S;
+      }
+      .boards {
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+        position: absolute;
+        left: 0;
+        .board {
+          list-style-type: none;
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          padding: 0.7rem 5rem 0.7rem 1.5rem;
+          margin-top: -1rem;
+          background-color: transparent;
+          border-top-right-radius: 50px;
+          border-bottom-right-radius: 50px;
+          cursor: pointer;
+          transition: 0.5s background-color ease, 0.3s color ease;
+          &:hover {
+            background-color: $pale_blue;
+            color: $vibrant_indigo;
+          }
+          .boardItem {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            align-items: center;
+          }
+        }
+        .create_new_board * {
+          color: $vibrant_indigo;
+          .newBoard {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .sidebar_visibility {
+      display: flex;
+      align-items: center;
+      width: 95%;
+      padding: 0.3rem 0;
+      margin-top: 3rem;
+      position: absolute;
+      bottom: 0.9rem;
+      left: 0;
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      padding: 0.7rem 0 0.7rem 1.5rem;
+      cursor: pointer;
+      gap: 0.5rem;
+      transition: 0.5s background-color ease, 0.3s color ease;
+      &:hover {
+        background-color: $pale_blue;
+        color: $vibrant_indigo;
+      }
+
+      .hide_sidebar {
+        text-transform: capitalize;
+      }
+      .controls {
+        border: 1px solid green;
+      }
+    }
+    .screen_mode {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $pale_blue;
+      padding: 0.4rem 0;
+      margin-bottom: 3rem;
+      .screen_mode_content {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 20px;
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        &::before {
+          position: absolute;
+          content: "";
+          height: 20px;
+          width: 20px;
+          left: 4px;
+          bottom: 4px;
+          transition: 0.4s;
+        }
+      }
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+      input:checked + .slider:before {
+        transform: translate(26px);
+      }
+    }
+  }
+}
